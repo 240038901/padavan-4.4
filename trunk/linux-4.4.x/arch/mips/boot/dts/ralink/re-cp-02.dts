@@ -6,8 +6,8 @@
 #include "mt7621-pinctrl-default-gpio.dtsi"
 
 / {
-	compatible = "jdcloud,re-cp-02";
-	model = "JD-Cloud RE-CP-02";
+	compatible = "mediatek,mt7621-soc";
+	model = "RE-CP-02";
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
@@ -40,10 +40,13 @@
 &spi0 {
 	status = "okay";
 
-	flash@0 {
+	m25p80@0 {
+		#address-cells = <1>;
+		#size-cells = <1>;
 		compatible = "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <25000000>;
+		m25p,fast-read;
 
 		partitions {
 			compatible = "fixed-partitions";
